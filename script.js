@@ -6,6 +6,85 @@ let firstValue = 0;
 let operatorValue = '';
 let awaitingNextValue = false;
 
+const calculatorButtons = document.querySelector('.calculator-buttons');
+
+const addBtn = document.createElement('button');   
+addBtn.innerHTML = '+';          
+calculatorButtons.appendChild(addBtn);
+addBtn.classList.add('operator');  
+
+const subtractBtn = document.createElement('button');   
+subtractBtn.innerHTML = '-';          
+calculatorButtons.appendChild(subtractBtn);
+subtractBtn.classList.add('operator');
+
+const multiplyBtn = document.createElement('button');   
+multiplyBtn.innerHTML = '×';          
+calculatorButtons.appendChild(multiplyBtn);
+multiplyBtn.classList.add('operator');
+
+const divideBtn = document.createElement('button');   
+divideBtn.innerHTML = '÷';          
+calculatorButtons.appendChild(divideBtn);
+divideBtn.classList.add('operator');
+
+const sevenBtn = document.createElement('button');   
+sevenBtn.value='7';
+sevenBtn.innerHTML = '7';          
+calculatorButtons.appendChild(sevenBtn);
+
+const eightBtn = document.createElement('button');   
+eightBtn.innerHTML = '8';          
+calculatorButtons.appendChild(eightBtn);
+
+const nineBtn = document.createElement('button');   
+nineBtn.innerHTML = '9';          
+calculatorButtons.appendChild(nineBtn);
+
+const fourBtn = document.createElement('button');   
+fourBtn.innerHTML = '4';          
+calculatorButtons.appendChild(fourBtn);
+
+const fiveBtn = document.createElement('button');   
+fiveBtn.innerHTML = '5';          
+calculatorButtons.appendChild(fiveBtn);
+
+const sixBtn = document.createElement('button');   
+sixBtn.innerHTML = '6';          
+calculatorButtons.appendChild(sixBtn);
+
+const oneBtn = document.createElement('button');   
+oneBtn.innerHTML = '1';          
+calculatorButtons.appendChild(oneBtn);
+
+const twoBtn = document.createElement('button');   
+twoBtn.innerHTML = '2';          
+calculatorButtons.appendChild(twoBtn);
+
+const threeBtn = document.createElement('button');   
+threeBtn.innerHTML = '3';          
+calculatorButtons.appendChild(threeBtn);
+
+const decimalBtn = document.createElement('button');   
+decimalBtn.innerHTML = '.';          
+calculatorButtons.appendChild(decimalBtn);
+decimalBtn.classList.add('decimal');
+
+const zeroBtn = document.createElement('button');   
+zeroBtn.innerHTML = '0';          
+calculatorButtons.appendChild(zeroBtn);
+
+const cleanBtn = document.createElement('button');   
+cleanBtn.innerHTML = 'C';          
+calculatorButtons.appendChild(cleanBtn);
+cleanBtn.classList.add('clear');
+cleanBtn.setAttribute('id', 'clear-btn');
+
+const equalBtn = document.createElement('button');   
+equalBtn.innerHTML = '=';          
+calculatorButtons.appendChild(equalBtn);
+equalBtn.classList.add('equal-sign');
+
 function sendNumberValue(number) {
   // Replace current display value if first value is entered
   if (awaitingNextValue) {

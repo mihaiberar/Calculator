@@ -1,6 +1,5 @@
 const calculatorDisplay = document.querySelector("h1");
 
-
 let firstValue = 0;
 let operatorValue = "";
 let awaitingNextValue = false;
@@ -8,40 +7,36 @@ let awaitingNextValue = false;
 const calculatorButtons = document.querySelector(".calculator-buttons");
 
 const data = {
-  operator: ['+', '-', '*', '/'],
+  operator: ["+", "-", "×", "÷"],
   numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
-  decimal: ['.'],
-  clear: ['C'],
-  equal: ['=']
-}
+  decimal: ["."],
+  clear: ["C"],
+  equal: ["="],
+};
 
 function createButtons(data) {
-  Object.getOwnPropertyNames(data).forEach(property => {
-    data[property].forEach(element => {
-      console.log(element)
+  Object.getOwnPropertyNames(data).forEach((property) => {
+    data[property].forEach((element) => {
       const addBtn = document.createElement("button");
       addBtn.innerHTML = element;
       calculatorButtons.appendChild(addBtn);
-      if (property == 'equal') {
-        addBtn.classList.add('equal-sign');
-        addBtn.classList.add('operator');
+      if (property == "equal") {
+        addBtn.classList.add("equal-sign");
+        addBtn.classList.add("operator");
       } else {
         addBtn.classList.add(property);
       }
-    })
-  })
+    });
+  });
 }
 
-createButtons(data)
+createButtons(data);
 
 const inputBtns = document.querySelectorAll("button");
 const clearBtn = document.getElementsByClassName("clear")[0];
-console.log(clearBtn);
-
 
 function sendNumberValue(number) {
   // Replace current display value if first value is entered
-  console.log(number);
   if (awaitingNextValue) {
     calculatorDisplay.textContent = number;
     awaitingNextValue = false;
@@ -64,9 +59,9 @@ function addDecimal() {
 
 // Calculate first and second values depending on operator
 const calculate = {
-  "/": (firstNumber, secondNumber) => firstNumber / secondNumber,
+  "÷": (firstNumber, secondNumber) => firstNumber / secondNumber,
 
-  "*": (firstNumber, secondNumber) => firstNumber * secondNumber,
+  "×": (firstNumber, secondNumber) => firstNumber * secondNumber,
 
   "+": (firstNumber, secondNumber) => firstNumber + secondNumber,
 
@@ -97,14 +92,18 @@ function useOperator(operator) {
 
 // Add Event Listeners for numbers, operators, decimal
 inputBtns.forEach((inputBtn) => {
-  if (inputBtn.classList.contains(numbers)) {
-    inputBtn.addEventListener("click", () => sendNumberValue(inputBtn.value));
+  
+  if (inputBtn.classList.contains("numbers")) {
+    inputBtn.addEventListener("click", () =>
+      sendNumberValue(inputBtn.innerText)
+    );
   } else if (inputBtn.classList.contains("operator")) {
-    inputBtn.addEventListener("click", () => useOperator(inputBtn.value));
+    inputBtn.addEventListener("click", () => useOperator(inputBtn.innerText));
   } else if (inputBtn.classList.contains("decimal")) {
     inputBtn.addEventListener("click", () => addDecimal());
   }
 });
+
 
 // Reset all values, display
 function resetAll() {
